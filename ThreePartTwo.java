@@ -18,19 +18,14 @@ public class ThreePartTwo {
 	        
 	        int prioritySum = 0;
 	        while (myReader.hasNextLine()) {
-	        	String firstLine = myReader.nextLine();
-	        	String secondLine = myReader.nextLine();
-	        	String thirdLine = myReader.nextLine();
-	        	
-	        	Set<Character> firstSet = readLine(firstLine);
-	        	Set<Character> secondSet = readLine(secondLine);
-	        	Set<Character> thirdSet = readLine(thirdLine);
+	        	Set<Character> firstSet = readLine(myReader.nextLine());
+	        	Set<Character> secondSet = readLine(myReader.nextLine());
+	        	Set<Character> thirdSet = readLine(myReader.nextLine());
 	        	
 	        	for (char c : firstSet) {
 	        		if (secondSet.contains(c)) {
 	        			if (thirdSet.contains(c)) {
 	        				prioritySum += itemPriorityMap.get(c);
-	        				System.out.println(c);
 	        				break;
 	        			}
 	        		}
