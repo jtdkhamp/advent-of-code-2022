@@ -21,8 +21,7 @@ public class Eight {
 			e.printStackTrace();
 		}
 		
-        List<List<Tree>> trees = new ArrayList<>();
-        initializeTrees(grid, trees);
+		List<List<Tree>> trees = initializeTrees(grid);
         
         long numVisibleTrees = trees.stream()
         		.flatMap(List::stream)
@@ -35,12 +34,13 @@ public class Eight {
         		.flatMap(List::stream)
         		.filter(tree -> tree.isVisible())
         		.mapToInt(tree -> tree.getViewDistance())
-        		.max().orElseThrow(NoSuchElementException::new);;
+        		.max().orElseThrow(NoSuchElementException::new);
         
         System.out.println("Max view distance: " + maxViewDistance);
 	}
 	
-	private static void initializeTrees(List<char[]> grid, List<List<Tree>> trees) {
+	private static List<List<Tree>> initializeTrees(List<char[]> grid) {
+		List<List<Tree>> trees = new ArrayList<>();
 		for (int i = 0; i < grid.size(); i ++) {
 			trees.add(new ArrayList<>());
 			for (int j = 0; j < grid.get(i).length; j ++) {
@@ -66,6 +66,7 @@ public class Eight {
         		}
         	}
         }
+        return trees;
 	}
 	
 	static class Tree {
